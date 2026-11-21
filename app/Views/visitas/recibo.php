@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Recibo <?= esc($visitaId) ?></title>
     <style>
-        /* Ticket para impresora de 80 mm */
+        /* Ticket de 80 mm */
         @page { size: 80mm auto; margin: 0; }
         body { width: 72mm; margin: 0 auto; padding: 4mm 0; font: 12px monospace; }
         .centrado { text-align: center; }

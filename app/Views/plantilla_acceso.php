@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= esc($this->renderSection('titulo')) ?> | Gestión de Órdenes</title>
     <link rel="stylesheet" href="<?= base_url('css/vendor/bootstrap-5.3.3.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/estilos.css') ?>">
+    <link rel="stylesheet" href="<?= recurso('css/estilos.css') ?>">
 </head>
 <body class="d-flex align-items-center min-vh-100">
 
@@ -19,7 +19,7 @@
 </script>
 <script src="<?= base_url('js/vendor/jquery-3.7.1.min.js') ?>"></script>
 <script src="<?= base_url('js/vendor/bootstrap-5.3.3.bundle.min.js') ?>"></script>
-<script src="<?= base_url('js/app.js') ?>"></script>
+<script src="<?= recurso('js/app.js') ?>"></script>
 <?= $this->renderSection('scripts') ?>
 </body>
 </html>

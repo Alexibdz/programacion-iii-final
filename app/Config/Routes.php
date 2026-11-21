@@ -22,3 +22,18 @@ $routes->get('categorias', 'Categorias::index');
 $routes->get('usuarios', 'Usuarios::index');
 $routes->get('historial', 'Historial::index');
 $routes->get('auditoria', 'Auditoria::index');
+
+// API JSON
+$routes->group('api', static function ($routes) {
+    $routes->get('categorias', 'Categorias::listar');
+    $routes->post('categorias', 'Categorias::crear');
+    $routes->put('categorias/(:num)', 'Categorias::actualizar/$1');
+    $routes->delete('categorias/(:num)', 'Categorias::eliminar/$1');
+    $routes->post('categorias/(:num)/restaurar', 'Categorias::restaurar/$1');
+
+    $routes->get('productos', 'Productos::listar');
+    $routes->post('productos', 'Productos::crear');
+    $routes->put('productos/(:num)', 'Productos::actualizar/$1');
+    $routes->delete('productos/(:num)', 'Productos::eliminar/$1');
+    $routes->post('productos/(:num)/restaurar', 'Productos::restaurar/$1');
+});

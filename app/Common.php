@@ -13,3 +13,9 @@
  *
  * @see: https://codeigniter.com/user_guide/extending/common.html
  */
+
+// URL para evitar caché vieja
+function recurso(string $ruta): string
+{
+    return base_url($ruta) . '?v=' . filemtime(FCPATH . $ruta);
+}

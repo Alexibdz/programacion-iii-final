@@ -58,7 +58,7 @@ CREATE TABLE mesa_visita (
   INDEX idx_visita_mesa_estado (mesa_id, estado)
 ) ENGINE=InnoDB;
 
--- Órdenes: cada pedido dentro de una visita
+-- Pedidos de cada visita
 CREATE TABLE ordenes (
   id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   mesa_visita_id  INT UNSIGNED NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE ordenes (
   INDEX idx_ordenes_estado (estado, creado_en)
 ) ENGINE=InnoDB;
 
--- Productos pedidos en cada orden, copiados al momento de pedir
+-- Detalle de cada orden
 CREATE TABLE orden_detalle (
   id               INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   orden_id         INT UNSIGNED NOT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE auditoria (
   INDEX idx_auditoria_registro (tabla, registro_id)
 ) ENGINE=InnoDB;
 
--- Usuario inicial: admin, contraseña admin123
+-- Usuario inicial admin / admin123
 INSERT INTO usuarios (nombre, usuario, password_hash, rol) VALUES
   ('Administrador', 'admin', '$2y$10$tRz9bdSaodtOKnNWPZ.Qz.Be08fMZJAkKjZYMRHLRD8iRkKdYcGLG', 'principal');
 
