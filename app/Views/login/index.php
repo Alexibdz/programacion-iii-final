@@ -20,3 +20,7 @@
     </div>
 </div>
 <?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script src="<?= recurso('js/login.js') ?>"></script>
+<?= $this->endSection() ?>

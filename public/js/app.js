@@ -45,6 +45,12 @@ function formatearPrecio(valor) {
 
 // Manejo de errores AJAX
 $(document).ajaxError(function (evento, respuesta) {
+    // Sesión vencida fuera del login
+    if (respuesta.status === 401 && $('#formulario-login').length === 0) {
+        window.location.href = URL_BASE + 'login';
+        return;
+    }
+
     const mensajes = respuesta.responseJSON?.messages;
 
     const mensaje = mensajes

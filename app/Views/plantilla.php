@@ -20,6 +20,25 @@ $menu = [
 ];
 
 // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+
+// Permisos del menú por rol
+$rol      = session('rol');
+$permisos = [
+    'cocina'   => ['cocina', 'principal', 'administrador'],
+    'usuarios' => ['principal'],
+];
+
+foreach ($menu as $titulo => $enlaces) {
+    foreach ($enlaces as $ruta => $texto) {
+        if (! in_array($rol, $permisos[$ruta] ?? ['principal', 'administrador', 'mozo'], true)) {
+            unset($menu[$titulo][$ruta]);
+        }
+    }
+
+    if ($menu[$titulo] === []) {
+        unset($menu[$titulo]);
+    }
+}
 ?>
 <!doctype html>
 <html lang="es">
@@ -29,6 +48,7 @@ $menu = [
     <title><?= esc($this->renderSection('titulo')) ?> | Gestión de Órdenes</title>
     <link rel="stylesheet" href="<?= base_url('css/vendor/bootstrap-5.3.3.min.css') ?>">
     <link rel="stylesheet" href="<?= recurso('css/estilos.css') ?>">
+    <?= $this->renderSection('estilos') ?>
 </head>
 <body>
 
@@ -51,7 +71,8 @@ $menu = [
             <?php endforeach ?>
         </nav>
 
-        <a class="btn btn-outline-light btn-sm mt-4" href="<?= base_url('login') ?>">Salir</a>
+        <div class="small text-white-50 px-2 mt-4 mb-2"><?= esc(session('nombre')) ?> · <?= esc(session('rol')) ?></div>
+        <a class="btn btn-outline-light btn-sm" href="<?= base_url('salir') ?>">Salir</a>
     </aside>
 
     <main class="flex-grow-1 min-w-0 p-4">

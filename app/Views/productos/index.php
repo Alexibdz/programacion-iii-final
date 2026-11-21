@@ -49,11 +49,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="producto-nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="producto-nombre" maxlength="80" required>
+                    <input type="text" class="form-control" id="producto-nombre" maxlength="30" required>
                 </div>
                 <div class="mb-3">
                     <label for="producto-descripcion" class="form-label">Descripción <span class="text-secondary">opcional</span></label>
-                    <input type="text" class="form-control" id="producto-descripcion" maxlength="255">
+                    <input type="text" class="form-control" id="producto-descripcion" maxlength="100">
                 </div>
                 <div>
                     <label for="producto-precio" class="form-label">Precio</label>

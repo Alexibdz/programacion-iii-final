@@ -14,7 +14,7 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Nueva contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password" minlength="6" required>
             </div>
             <div class="mb-4">
                 <label for="password_confirmacion" class="form-label">Repetir contraseña</label>
@@ -24,4 +24,9 @@
         </form>
     </div>
 </div>
+<p class="text-center small mt-3"><a href="<?= base_url('salir') ?>" class="text-secondary">Salir</a></p>
+<?= $this->endSection() ?>
+
+<?= $this->section('scripts') ?>
+<script src="<?= recurso('js/credenciales.js') ?>"></script>
 <?= $this->endSection() ?>

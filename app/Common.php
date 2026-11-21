@@ -19,3 +19,9 @@ function recurso(string $ruta): string
 {
     return base_url($ruta) . '?v=' . filemtime(FCPATH . $ruta);
 }
+
+// Pantalla de inicio según el rol
+function paginaInicio(string $rol): string
+{
+    return $rol === 'cocina' ? 'cocina' : 'mesas';
+}

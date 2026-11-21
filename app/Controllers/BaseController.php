@@ -45,5 +45,8 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
         // $this->session = service('session');
+
+        // Zona horaria de MySQL en Argentina
+        db_connect()->query("SET time_zone = '-03:00'");
     }
 }
