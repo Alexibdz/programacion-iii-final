@@ -1,3 +1,26 @@
+<?php
+// BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+
+// Secciones del menú lateral
+$menu = [
+    'Salón' => [
+        'mesas'  => 'Mapa de mesas',
+        'cocina' => 'Cocina',
+    ],
+    'Menú' => [
+        'productos'  => 'Productos',
+        'categorias' => 'Categorías',
+    ],
+    'Administración' => [
+        'mesas/gestion' => 'Gestión de mesas',
+        'usuarios'      => 'Usuarios',
+        'historial'     => 'Historial',
+        'auditoria'     => 'Auditoría',
+    ],
+];
+
+// FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -9,43 +32,34 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="<?= base_url('/') ?>">Gestión de Órdenes</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu-principal">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('mesas') ?>">Mesas</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?= base_url('cocina') ?>">Cocina</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Menú</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url('productos') ?>">Productos</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('categorias') ?>">Categorías</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administración</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= base_url('mesas/gestion') ?>">Mesas</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('usuarios') ?>">Usuarios</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="<?= base_url('historial') ?>">Historial</a></li>
-                        <li><a class="dropdown-item" href="<?= base_url('auditoria') ?>">Auditoría</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <a class="btn btn-outline-light btn-sm" href="<?= base_url('login') ?>">Salir</a>
-        </div>
-    </div>
-</nav>
+<?php // BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas) ?>
+<div class="d-flex min-vh-100">
+    <aside class="barra-lateral d-flex flex-column p-3 text-bg-dark">
+        <a class="fs-5 fw-semibold text-white text-decoration-none px-2 mb-2" href="<?= base_url('/') ?>">Gestión de Órdenes</a>
 
-<main class="container py-4">
-    <div id="contenedor-alertas"></div>
-    <?= $this->renderSection('contenido') ?>
-</main>
+        <nav class="menu-lateral flex-grow-1">
+            <?php foreach ($menu as $titulo => $enlaces): ?>
+                <div class="menu-titulo"><?= esc($titulo) ?></div>
+                <ul class="nav flex-column">
+                    <?php foreach ($enlaces as $ruta => $texto): ?>
+                        <?php $activo = url_is($ruta) || ($ruta === 'mesas' && url_is('visitas*')) ?>
+                        <li class="nav-item">
+                            <a class="nav-link<?= $activo ? ' active' : '' ?>" href="<?= base_url($ruta) ?>"<?= $activo ? ' aria-current="page"' : '' ?>><?= esc($texto) ?></a>
+                        </li>
+                    <?php endforeach ?>
+                </ul>
+            <?php endforeach ?>
+        </nav>
+
+        <a class="btn btn-outline-light btn-sm mt-4" href="<?= base_url('login') ?>">Salir</a>
+    </aside>
+
+    <main class="flex-grow-1 min-w-0 p-4">
+        <div id="contenedor-alertas"></div>
+        <?= $this->renderSection('contenido') ?>
+    </main>
+</div>
+<?php // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas) ?>
 
 <script>
     const URL_BASE = '<?= base_url('/') ?>';

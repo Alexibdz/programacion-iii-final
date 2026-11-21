@@ -36,4 +36,13 @@ $routes->group('api', static function ($routes) {
     $routes->put('productos/(:num)', 'Productos::actualizar/$1');
     $routes->delete('productos/(:num)', 'Productos::eliminar/$1');
     $routes->post('productos/(:num)/restaurar', 'Productos::restaurar/$1');
+
+    // BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+    $routes->get('mesas', 'Mesas::listar');
+    $routes->post('mesas', 'Mesas::crear');
+    $routes->put('mesas/(:num)', 'Mesas::actualizar/$1');
+    $routes->delete('mesas/(:num)', 'Mesas::eliminar/$1');
+    $routes->post('mesas/(:num)/restaurar', 'Mesas::restaurar/$1');
+    $routes->post('mesas/(:num)/abrir', 'Mesas::abrir/$1');
+    // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
 });

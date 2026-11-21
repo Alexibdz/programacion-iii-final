@@ -37,6 +37,12 @@ CREATE TABLE productos (
 CREATE TABLE mesas (
   id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   numero          SMALLINT UNSIGNED NOT NULL UNIQUE,
+  -- BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+  capacidad       TINYINT UNSIGNED NOT NULL DEFAULT 4 CHECK (capacidad BETWEEN 1 AND 12),
+  forma           ENUM('cuadrada','redonda','rectangular') NOT NULL DEFAULT 'cuadrada',
+  pos_x           SMALLINT UNSIGNED NOT NULL DEFAULT 400,
+  pos_y           SMALLINT UNSIGNED NOT NULL DEFAULT 320,
+  -- FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
   creado_en       DATETIME NULL,
   actualizado_en  DATETIME NULL,
   eliminado_en    DATETIME NULL
@@ -142,6 +148,17 @@ INSERT INTO productos (categoria_id, nombre, descripcion, precio, creado_en) VAL
   (3, 'Gaseosa',             '500 ml',                         2500, NOW()),
   (4, 'Flan casero',         'Con dulce de leche',             4500, NOW());
 
-INSERT INTO mesas (numero, creado_en) VALUES
-  (1, NOW()), (2, NOW()), (3, NOW()), (4, NOW()),
-  (5, NOW()), (6, NOW()), (7, NOW()), (8, NOW());
+-- BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+-- Salón de ejemplo
+INSERT INTO mesas (numero, capacidad, forma, pos_x, pos_y, creado_en) VALUES
+  (1,  4, 'cuadrada',    120, 110, NOW()),
+  (2,  4, 'cuadrada',    290, 110, NOW()),
+  (3,  4, 'cuadrada',    460, 110, NOW()),
+  (4,  4, 'cuadrada',    630, 110, NOW()),
+  (5,  6, 'redonda',     180, 310, NOW()),
+  (6,  4, 'redonda',     400, 310, NOW()),
+  (7,  4, 'redonda',     610, 310, NOW()),
+  (8,  8, 'rectangular', 380, 510, NOW()),
+  (9,  2, 'cuadrada',    580, 510, NOW()),
+  (10, 2, 'cuadrada',    690, 510, NOW());
+-- FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)

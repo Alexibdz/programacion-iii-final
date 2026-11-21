@@ -133,7 +133,9 @@ class App extends BaseConfig
      * @see https://www.php.net/manual/en/timezones.php for list of timezones
      *      supported by PHP.
      */
-    public string $appTimezone = 'UTC';
+    // BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+    public string $appTimezone = 'America/Argentina/Buenos_Aires';
+    // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
 
     /**
      * --------------------------------------------------------------------------
