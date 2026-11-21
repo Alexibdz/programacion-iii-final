@@ -1,0 +1,13 @@
+/* Estilos propios del sistema, complementan a Bootstrap */
+
+body {
+    background-color: #f5f6f8;
+}
+
+#contenedor-alertas {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1080;
+    width: min(360px, calc(100% - 2rem));
+}

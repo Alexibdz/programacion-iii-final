@@ -1,5 +1,3 @@
--- Generado con asistencia de IA: Claude, Anthropic. Revisado y adaptado por el autor.
-
 CREATE DATABASE IF NOT EXISTS gestion_ordenes
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE gestion_ordenes;
@@ -119,14 +117,12 @@ CREATE TABLE historial_ordenes (
 
 -- Auditoría de todo el sistema
 CREATE TABLE auditoria (
-  id                INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  tabla             VARCHAR(40)  NOT NULL,
-  registro_id       INT UNSIGNED NOT NULL,
-  accion            ENUM('ALTA','MODIFICACION','BAJA','RESTAURACION') NOT NULL,
-  datos_anteriores  JSON NULL,
-  datos_nuevos      JSON NULL,
-  usuario_id        INT UNSIGNED NULL,
-  registrado_en     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  tabla          VARCHAR(40)  NOT NULL,
+  registro_id    INT UNSIGNED NOT NULL,
+  accion         ENUM('ALTA','MODIFICACION','BAJA','RESTAURACION') NOT NULL,
+  usuario_id     INT UNSIGNED NULL,
+  registrado_en  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX idx_auditoria_registro (tabla, registro_id)
 ) ENGINE=InnoDB;
 
