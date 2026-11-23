@@ -9,7 +9,7 @@
 </head>
 <body class="d-flex align-items-center min-vh-100">
 
-<main class="container" style="max-width: 400px;">
+<main class="container contenedor-acceso">
     <div id="contenedor-alertas"></div>
     <?= $this->renderSection('contenido') ?>
 </main>

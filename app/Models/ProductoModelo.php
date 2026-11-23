@@ -6,12 +6,11 @@ namespace App\Models;
 class ProductoModelo extends ModeloBase
 {
     protected $table         = 'productos';
-    protected $allowedFields = ['categoria_id', 'nombre', 'descripcion', 'precio'];
+    protected $allowedFields = ['categoria_id', 'nombre', 'precio'];
 
     protected $validationRules = [
         'categoria_id' => 'required|is_natural_no_zero|is_not_unique[categorias.id]',
         'nombre'       => 'required|max_length[30]',
-        'descripcion'  => 'permit_empty|max_length[100]',
         'precio'       => 'required|decimal|greater_than[0]',
     ];
 
@@ -24,9 +23,6 @@ class ProductoModelo extends ModeloBase
         'nombre' => [
             'required'   => 'El nombre es obligatorio.',
             'max_length' => 'El nombre no puede superar los 30 caracteres.',
-        ],
-        'descripcion' => [
-            'max_length' => 'La descripción no puede superar los 100 caracteres.',
         ],
         'precio' => [
             'required'     => 'El precio es obligatorio.',

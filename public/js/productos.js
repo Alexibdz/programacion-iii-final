@@ -40,7 +40,7 @@ $(function () {
         const $cuerpo = $('#tabla-productos').empty();
 
         if (productos.length === 0) {
-            $cuerpo.append('<tr><td colspan="5" class="text-center text-secondary py-4">No hay productos para mostrar.</td></tr>');
+            $cuerpo.append('<tr><td colspan="4" class="text-center text-secondary py-4">No hay productos para mostrar.</td></tr>');
             return;
         }
 
@@ -61,7 +61,6 @@ $(function () {
             $fila.append(
                 $('<td>').text(producto.nombre),
                 $('<td>').text(producto.categoria),
-                $('<td class="text-secondary">').text(producto.descripcion ?? ''),
                 $('<td class="text-end">').text(formatearPrecio(producto.precio)),
                 $acciones,
             );
@@ -79,7 +78,6 @@ $(function () {
         $('#producto-id').val(producto ? producto.id : '');
         $('#producto-categoria').val(producto ? producto.categoria_id : $('#filtro-categoria').val() || $('#producto-categoria option:first').val());
         $('#producto-nombre').val(producto ? producto.nombre : '');
-        $('#producto-descripcion').val(producto ? producto.descripcion : '');
         $('#producto-precio').val(producto ? producto.precio : '');
         $('#titulo-modal').text(producto ? 'Editar producto' : 'Nuevo producto');
         modal.show();
@@ -119,7 +117,6 @@ $(function () {
         const datos = {
             categoria_id: Number($('#producto-categoria').val()),
             nombre: $('#producto-nombre').val().trim(),
-            descripcion: $('#producto-descripcion').val().trim(),
             precio: Number($('#producto-precio').val()),
         };
 

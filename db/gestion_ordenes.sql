@@ -28,7 +28,6 @@ CREATE TABLE productos (
   id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   categoria_id    INT UNSIGNED NOT NULL,
   nombre          VARCHAR(80)   NOT NULL,
-  descripcion     VARCHAR(255)  NULL,
   precio          DECIMAL(10,2) NOT NULL CHECK (precio > 0),
   creado_en       DATETIME NULL,
   actualizado_en  DATETIME NULL,
@@ -71,8 +70,7 @@ CREATE TABLE mesa_visita (
 CREATE TABLE ordenes (
   id              INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   mesa_visita_id  INT UNSIGNED NOT NULL,
-  estado          ENUM('pendiente','en_preparacion','lista','entregada','cancelada')
-                  NOT NULL DEFAULT 'pendiente',
+  estado          ENUM('pendiente','en_preparacion','terminada','cancelada') NOT NULL DEFAULT 'pendiente',
   observaciones   VARCHAR(255) NULL,
   creado_en       DATETIME NULL,
   actualizado_en  DATETIME NULL,
@@ -142,14 +140,57 @@ INSERT INTO usuarios (nombre, usuario, password_hash, rol) VALUES
 INSERT INTO categorias (nombre, requiere_cocina) VALUES
   ('Entradas', TRUE), ('Platos principales', TRUE), ('Bebidas', FALSE), ('Postres', TRUE);
 
-INSERT INTO productos (categoria_id, nombre, descripcion, precio, creado_en) VALUES
-  (1, 'Empanadas',           'Docena, carne o jamón y queso', 12000, NOW()),
-  (1, 'Provoleta',           'A la parrilla con orégano',      6500, NOW()),
-  (2, 'Milanesa napolitana', 'Con papas fritas',              14000, NOW()),
-  (2, 'Bife de chorizo',     'Con guarnición a elección',     18000, NOW()),
-  (3, 'Agua mineral',        '500 ml',                         2000, NOW()),
-  (3, 'Gaseosa',             '500 ml',                         2500, NOW()),
-  (4, 'Flan casero',         'Con dulce de leche',             4500, NOW());
+INSERT INTO productos (categoria_id, nombre, precio, creado_en) VALUES
+  (1, 'Empanadas',                      12000, NOW()),
+  (1, 'Provoleta',                       6500, NOW()),
+  (2, 'Milanesa napolitana',            14000, NOW()),
+  (2, 'Bife de chorizo',                18000, NOW()),
+  (3, 'Agua mineral',                    2000, NOW()),
+  (3, 'Gaseosa',                         2500, NOW()),
+  (4, 'Flan casero',                     4500, NOW());
+
+-- Menú de ejemplo
+INSERT INTO productos (categoria_id, nombre, precio, creado_en) VALUES
+  (1, 'Rabas',                          11500, NOW()),
+  (1, 'Papas fritas',                    6000, NOW()),
+  (1, 'Papas con cheddar',               8500, NOW()),
+  (1, 'Tabla de fiambres',              15000, NOW()),
+  (1, 'Bastones de muzzarella',          8000, NOW()),
+  (1, 'Langostinos rebozados',          14500, NOW()),
+  (1, 'Croquetas de jamón',              7500, NOW()),
+  (1, 'Ensalada caprese',                7000, NOW()),
+  (1, 'Chorizo a la parrilla',           5500, NOW()),
+  (1, 'Morcilla a la parrilla',          5000, NOW()),
+  (2, 'Milanesa a caballo',             15500, NOW()),
+  (2, 'Suprema de pollo',               13000, NOW()),
+  (2, 'Ojo de bife',                    21000, NOW()),
+  (2, 'Vacío a la parrilla',            19000, NOW()),
+  (2, 'Pollo al horno',                 12500, NOW()),
+  (2, 'Ravioles de ricota',             11500, NOW()),
+  (2, 'Sorrentinos de jamón y queso',   12000, NOW()),
+  (2, 'Ñoquis de papa',                 10500, NOW()),
+  (2, 'Hamburguesa completa',           12000, NOW()),
+  (2, 'Risotto de hongos',              13500, NOW()),
+  (3, 'Agua con gas',                    2000, NOW()),
+  (3, 'Gaseosa grande',                  5000, NOW()),
+  (3, 'Jugo de naranja',                 4000, NOW()),
+  (3, 'Limonada',                        4500, NOW()),
+  (3, 'Cerveza tirada',                  5500, NOW()),
+  (3, 'Cerveza en lata',                 4000, NOW()),
+  (3, 'Vino tinto Malbec',              14000, NOW()),
+  (3, 'Vino blanco Torrontés',          13000, NOW()),
+  (3, 'Copa de vino',                    4500, NOW()),
+  (3, 'Fernet con cola',                 6000, NOW()),
+  (4, 'Tiramisú',                        6500, NOW()),
+  (4, 'Helado',                          5500, NOW()),
+  (4, 'Panqueques con dulce de leche',   6000, NOW()),
+  (4, 'Brownie con helado',              6500, NOW()),
+  (4, 'Volcán de chocolate',             7500, NOW()),
+  (4, 'Cheesecake',                      6800, NOW()),
+  (4, 'Ensalada de frutas',              4500, NOW()),
+  (4, 'Queso y dulce',                   4000, NOW()),
+  (4, 'Mousse de chocolate',             5000, NOW()),
+  (4, 'Budín de pan',                    5000, NOW());
 
 -- BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
 -- Salón de ejemplo

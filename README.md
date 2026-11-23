@@ -49,6 +49,32 @@ composer install
 2. Copiar el archivo `env` como `.env` y completar los datos de conexión a la base.
 3. Ejecutar `php spark serve` y abrir <http://localhost:8080>.
 
+## Primer ingreso
+
+| Usuario | Contraseña |
+|---|---|
+| `admin` | `admin123` |
+
+Al ingresar con estas credenciales el sistema obliga a reemplazarlas por un usuario y una contraseña propios.
+
+## Uso
+
+**Mozo**
+1. En **Mapa de mesas** tocar una mesa libre y presionar **Abrir visita**.
+2. Con **Nueva orden** elegir los productos del menú y confirmar. Los platos pasan a cocina y las bebidas quedan terminadas en el momento.
+3. Cada pedido del cliente es una orden nueva dentro de la misma visita.
+4. Cuando cocina termina todas las órdenes, **Cerrar visita** genera el recibo para imprimir. Una visita sin órdenes se cancela.
+
+**Cocina**
+1. En **Pedidos de cocina** las órdenes llegan agrupadas por mesa, de la más vieja a la más nueva.
+2. Cada orden pasa de **Pendiente** a **En preparación** y luego a **Terminada**. Una orden en preparación puede volver a pendiente para que el mozo la cancele.
+
+**Administración**
+- **Productos** y **Categorías**: menú del restaurante. La categoría indica si sus productos pasan por cocina.
+- **Gestión de mesas**: alta, baja y ubicación de las mesas en el plano.
+- **Historial**: visitas cerradas, resumen de ventas del día y reimpresión de recibos.
+- **Auditoría**: registro de cada alta, modificación y baja del sistema.
+- **Usuarios**: alta de cuentas y asignación de roles, solo para el usuario principal.
 
 ## Licencia
 
