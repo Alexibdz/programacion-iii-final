@@ -96,10 +96,17 @@ class Login extends BaseController
             return $this->failValidationErrors(['password' => 'La nueva contraseña no puede ser la inicial.']);
         }
 
-        (new UsuarioModelo())->update($id, [
+        $usuarios = new UsuarioModelo();
+
+        $guardado = $usuarios->update($id, [
+            'id'            => $id,
             'usuario'       => trim($datos['usuario']),
             'password_hash' => password_hash($datos['password'], PASSWORD_DEFAULT),
         ]);
+
+        if (! $guardado) {
+            return $this->failValidationErrors($usuarios->errors());
+        }
 
         session()->set('debe_cambiar_credenciales', false);
 

@@ -21,6 +21,9 @@ $menu = [
 
 // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
 
+// Estadísticas en administración
+$menu['Administración']['estadisticas'] = 'Estadísticas';
+
 // Permisos del menú por rol
 $rol      = session('rol');
 $permisos = [

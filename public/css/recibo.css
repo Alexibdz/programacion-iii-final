@@ -1,0 +1,60 @@
+/* Ticket de 80 mm */
+
+@page {
+    size: 80mm auto;
+    margin: 0;
+}
+
+body {
+    width: 72mm;
+    margin: 0 auto;
+    padding: 4mm 0;
+    font: 12px monospace;
+    color: #000;
+}
+
+.centrado {
+    text-align: center;
+}
+
+.separador {
+    border-top: 1px dashed #000;
+    margin: 6px 0;
+}
+
+.fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.detalle {
+    padding-left: 10px;
+    color: #333;
+}
+
+.total {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Botones fuera de la impresión */
+.acciones {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.acciones a,
+.acciones button {
+    font: 13px sans-serif;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+@media print {
+    .no-imprimir {
+        display: none;
+    }
+}
