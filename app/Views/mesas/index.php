@@ -19,26 +19,7 @@
     <div class="card-footer bg-white d-flex flex-wrap gap-3 small text-secondary">
         <span><span class="leyenda-punto leyenda-libre"></span>Libre</span>
         <span><span class="leyenda-punto leyenda-ocupada"></span>Ocupada</span>
-        <span class="ms-auto">Tocá una mesa para abrirla o ver su visita.</span>
-    </div>
-</div>
-
-<div class="modal fade" id="modal-mesa" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title h5" id="mesa-titulo">Mesa</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <dl class="row mb-0" id="mesa-datos"></dl>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" id="boton-abrir">Abrir mesa</button>
-                <a class="btn btn-dark" id="boton-visita" href="#">Ver visita</a>
-            </div>
-        </div>
+        <span class="ms-auto">Tocá una mesa para entrar.</span>
     </div>
 </div>
 <?= $this->endSection() ?>

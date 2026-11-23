@@ -43,6 +43,11 @@ function formatearPrecio(valor) {
     return formatoPesos.format(Number(valor));
 }
 
+// Hora de una fecha de la base
+function formatearHora(fechaHora) {
+    return fechaHora ? fechaHora.substring(11, 16) : '';
+}
+
 // Manejo de errores AJAX
 $(document).ajaxError(function (evento, respuesta) {
     // Sesión vencida fuera del login

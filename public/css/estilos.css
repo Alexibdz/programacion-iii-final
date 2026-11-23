@@ -234,3 +234,49 @@ body {
 }
 
 /* FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas) */
+
+/* Tarjetas de productos al armar una orden */
+.tarjeta-producto {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4px;
+    min-height: 72px;
+    padding: 8px 10px;
+}
+
+.tarjeta-producto-nombre {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.tarjeta-producto.seleccionada {
+    border-color: #212529 !important;
+    background-color: #eef1f4;
+}
+
+.tarjeta-producto-cantidad {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+/* Pedido fijo al costado mientras se recorre el menú */
+@media (min-width: 992px) {
+    .panel-pedido {
+        position: sticky;
+        top: 1rem;
+    }
+}
+
+/* Ancho del login y el cambio de credenciales */
+.contenedor-acceso {
+    max-width: 400px;
+}
+
+/* Tarjeta de mesa libre */
+.tarjeta-mesa-libre {
+    max-width: 480px;
+}

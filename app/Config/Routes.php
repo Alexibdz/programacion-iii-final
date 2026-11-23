@@ -19,23 +19,32 @@ $routes->group('', ['filter' => 'acceso'], static function ($routes) {
 // Cocina
 $routes->group('', ['filter' => 'acceso:cocina,principal,administrador'], static function ($routes) {
     $routes->get('cocina', 'Cocina::index');
+    $routes->get('api/cocina', 'Cocina::cola');
 });
 
 // Mozo y administración
 $routes->group('', ['filter' => 'acceso:principal,administrador,mozo'], static function ($routes) {
     $routes->get('mesas', 'Mesas::index');
     $routes->get('mesas/gestion', 'Mesas::gestion');
+    $routes->get('mesas/(:num)', 'Visitas::mesa/$1');
     $routes->get('visitas/(:num)', 'Visitas::ver/$1');
+    $routes->get('visitas/(:num)/nueva', 'Visitas::nuevaOrden/$1');
     $routes->get('visitas/(:num)/recibo', 'Visitas::recibo/$1');
     $routes->get('productos', 'Productos::index');
     $routes->get('categorias', 'Categorias::index');
     $routes->get('historial', 'Historial::index');
     $routes->get('auditoria', 'Auditoria::index');
+    $routes->get('estadisticas', 'Estadisticas::index');
 });
 
 // Usuarios
 $routes->group('', ['filter' => 'acceso:principal'], static function ($routes) {
     $routes->get('usuarios', 'Usuarios::index');
+    $routes->get('api/usuarios', 'Usuarios::listar');
+    $routes->post('api/usuarios', 'Usuarios::crear');
+    $routes->put('api/usuarios/(:num)', 'Usuarios::actualizar/$1');
+    $routes->delete('api/usuarios/(:num)', 'Usuarios::eliminar/$1');
+    $routes->post('api/usuarios/(:num)/restaurar', 'Usuarios::restaurar/$1');
 });
 
 // API JSON
@@ -53,6 +62,12 @@ $routes->group('api', ['filter' => 'acceso:principal,administrador,mozo'], stati
     $routes->post('productos/(:num)/restaurar', 'Productos::restaurar/$1');
 
     $routes->get('auditoria', 'Auditoria::listar');
+    $routes->get('historial', 'Historial::listar');
+    $routes->get('estadisticas', 'Estadisticas::resumen');
+
+    $routes->get('visitas/(:num)', 'Visitas::detalle/$1');
+    $routes->post('visitas/(:num)/ordenes', 'Visitas::crearOrden/$1');
+    $routes->post('visitas/(:num)/cerrar', 'Visitas::cerrar/$1');
 
     // BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
     $routes->get('mesas', 'Mesas::listar');
@@ -62,4 +77,9 @@ $routes->group('api', ['filter' => 'acceso:principal,administrador,mozo'], stati
     $routes->post('mesas/(:num)/restaurar', 'Mesas::restaurar/$1');
     $routes->post('mesas/(:num)/abrir', 'Mesas::abrir/$1');
     // FIN BLOQUE 100% DESARROLLADO CON IA (/docs/diseño-de-mesas)
+});
+
+// Estados de órdenes, compartido entre mozo y cocina
+$routes->group('api', ['filter' => 'acceso:principal,administrador,mozo,cocina'], static function ($routes) {
+    $routes->put('ordenes/(:num)/estado', 'Ordenes::cambiarEstado/$1');
 });
